@@ -14,17 +14,27 @@ function setBadge() {
   }
 }
 
+function initSettings() {
+  chrome.storage.local.get('enabled', function(result) {
+    if (result.enabled === undefined) {
+      enabled = true
+      chrome.storage.local.set({'enabled': enabled});
+    } else {
+      enabled = result.enabled
+    }
+    setBadge()
+  });
+}
+
+chrome.runtime.onStartup.addListener(
+  function() {
+    initSettings();
+  }
+);
+
 chrome.runtime.onInstalled.addListener(
   function () {
-    chrome.storage.local.get('enabled', function(result) {
-      if (result.enabled === undefined) {
-        enabled = true
-        chrome.storage.local.set({'enabled': enabled});
-      } else {
-        enabled = result.enabled
-      }
-      setBadge()
-    });
+    initSettings();
   }
 );
 
