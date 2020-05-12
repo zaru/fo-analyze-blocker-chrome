@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "fO AnalyzeBlocker",
   "description": "ferretOne のアクセス解析を無効にします",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "icons": {
     "16": "icon-16.png",
     "48": "icon-48.png",
